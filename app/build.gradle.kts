@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.connectiondb"
+    namespace = "com.example.testclase1"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.example.connectiondb"
+        applicationId = "com.example.testclase1"
         minSdk = 24
         targetSdk = 37
         versionCode = 1

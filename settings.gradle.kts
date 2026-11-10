@@ -22,6 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ConnectionDB"
+rootProject.name = "TestClase1"
 include(":app")
- 

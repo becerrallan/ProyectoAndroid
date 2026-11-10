@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">ConnectionDB</string>
+    <string name="app_name">TestClase1</string>
+    <string name="person_form_title">Registro de personas</string>
+    <string name="person_form_description">Ingresa el ID, nombre y apellido para gestionar un registro.</string>
+    <string name="person_id">ID</string>
+    <string name="person_first_name">Nombre</string>
+    <string name="person_last_name">Apellido</string>
+    <string name="action_create">Crear</string>
+    <string name="action_read">Consultar</string>
+    <string name="action_update">Actualizar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_back">Regresar</string>
+    <string name="list_empty">No se encontraron resultados.</string>
 </resources>
