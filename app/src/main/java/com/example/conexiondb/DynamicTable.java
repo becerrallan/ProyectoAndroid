@@ -11,9 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class DynamicTable {
-    private static final int COLOR_CABEZERA = Color.parseColor("1A2142");
-    private static final int COLOR_FILA_PAR = Color.parseColor("FFFFF");
-    private static final int COLOR_FILA_IMPAR = Color.parseColor("F8F285");
+    private static final int COLOR_CABEZERA = Color.parseColor("#1A2142");
+    private static final int COLOR_FILA_PAR = Color.parseColor("#FFFFFF");
+    private static final int COLOR_FILA_IMPAR = Color.parseColor("#F8F285");
 
     private final TableLayout table;
     private final Context context;

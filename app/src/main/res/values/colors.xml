@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#4F46E5</color>
+    <color name="colorPrimaryDark">#3730A3</color>
+    <color name="colorAccent">#0D9488</color>
+    <color name="colorPrimaryContainer">#EEF2FF</color>
+    <color name="colorOnPrimaryContainer">#312E81</color>
+    <color name="colorSecondary">#0D9488</color>
+    <color name="colorSecondaryContainer">#CCFBF1</color>
+    <color name="app_background">#F8FAFC</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_stroke">#E2E8F0</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="btn_create">#4F46E5</color>
+    <color name="btn_read">#0D9488</color>
+    <color name="btn_update">#D97706</color>
+    <color name="btn_delete">#DC2626</color>
+    <color name="btn_delete_container">#FEF2F2</color>
+    <color name="btn_list">#4338CA</color>
 </resources>

@@ -9,6 +9,11 @@
     <string name="action_read">Consultar</string>
     <string name="action_update">Actualizar</string>
     <string name="action_delete">Eliminar</string>
+    <string name="action_list">Listar Registros</string>
     <string name="action_back">Regresar</string>
     <string name="list_empty">No se encontraron resultados.</string>
+    <string name="card_form_title">Información Personal</string>
+    <string name="card_actions_title">Panel de Acciones</string>
+    <string name="list_title">Listado de Personas</string>
+    <string name="list_subtitle">Visualización dinámica de la base de datos</string>
 </resources>

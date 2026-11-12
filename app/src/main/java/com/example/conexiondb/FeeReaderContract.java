@@ -16,7 +16,7 @@ public class FeeReaderContract {
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + FeedEntry.nameTable + " ("
                     + FeedEntry._ID + " INTEGER PRIMARY KEY,"
-                    + FeedEntry.column1 + " TEXT"
+                    + FeedEntry.column1 + " TEXT,"
                     + FeedEntry.column2 + " TEXT);";
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + FeedEntry.nameTable;

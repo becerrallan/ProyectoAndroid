@@ -16,7 +16,6 @@ public class FeeReaderDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(FeeReaderContract.SQL_CREATE_ENTRIES);
-        onCreate(db);
     }
 
     @Override

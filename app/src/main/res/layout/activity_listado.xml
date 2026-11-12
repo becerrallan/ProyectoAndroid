@@ -2,52 +2,94 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listado"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
+    android:background="@color/app_background"
+    android:padding="20dp"
     tools:context="com.example.Listado">
 
+    <!-- Top Action / Navigation Bar -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
-        style="@style/Widget.Material3.Button.OutlinedButton"
+        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryContainer"
         android:minHeight="48dp"
+        android:onClick="regresar"
         android:text="@string/action_back"
+        android:textColor="@color/colorOnPrimaryContainer"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_arrow_back"
+        app:iconGravity="textStart"
+        app:iconTint="@color/colorOnPrimaryContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/listadoContenido"
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:text="@string/list_title"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button"
+        app:layout_constraintTop_toTopOf="@id/button" />
+
+    <!-- Table Container Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardTabla"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/button"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TableLayout
-            android:id="@+id/tblistado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:shrinkColumns="*"
-            android:stretchColumns="*" />
-    </androidx.core.widget.NestedScrollView>
-
-    <TextView
-        android:id="@+id/txtVacio"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="24dp"
-        android:text="@string/list_empty"
-        android:textAppearance="?attr/textAppearanceBodyLarge"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@id/listadoContenido"
-        app:layout_constraintBottom_toBottomOf="@id/listadoContenido"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button"
+        app:strokeColor="@color/card_stroke"
+        app:strokeWidth="1dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/listadoContenido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                android:padding="8dp">
+
+                <TableLayout
+                    android:id="@+id/tblistado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*" />
+            </androidx.core.widget.NestedScrollView>
+
+            <TextView
+                android:id="@+id/txtVacio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="32dp"
+                android:text="@string/list_empty"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="@color/text_secondary"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

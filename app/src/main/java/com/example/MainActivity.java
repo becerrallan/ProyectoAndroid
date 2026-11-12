@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,11 +54,18 @@ public class MainActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(FeeReaderContract.FeedEntry.column1, nombre);
         values.put(FeeReaderContract.FeedEntry.column2, apellido);
-        long newRowId = db.insert(FeeReaderContract.FeedEntry.)
+        long newRowId = db.insert(FeeReaderContract.FeedEntry.nameTable, null, values);
+        if (newRowId == -1){
+            mostrarMensaje("No se guardo el registro");
+        }else {
+            txtId.setText(String.valueOf(newRowId));
+            mostrarMensaje("Se guardo con exito");
+        }
     }
 
-    public void buscar(View vista){
+    public void buscar(View view){
         String id = leerId();
+        if (id == null || id.isEmpty()){return;}
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] projection = {
                 BaseColumns._ID,
@@ -66,31 +74,31 @@ public class MainActivity extends AppCompatActivity {
         };
         String selection = FeeReaderContract.FeedEntry._ID + " = ?";
         String[] selectionArgs = {id};
-        try (Cursor cursor= db.query(
+        try(Cursor cursor = db.query(
                 FeeReaderContract.FeedEntry.nameTable,
                 projection,
                 selection,
                 selectionArgs,
                 null,
                 null,
-                null,
                 null
-        )){
+        )) {
             if (cursor.moveToFirst()){
                 txtNombre.setText(cursor.getString(
-                        cursor.getColumnIndexOrThrow(FeeReaderContract.FeedEntry.column1)));
+                        cursor.getColumnIndexOrThrow(FeeReaderContract.FeedEntry.column1)
+                ));
                 txtApellido.setText(cursor.getString(
                         cursor.getColumnIndexOrThrow(FeeReaderContract.FeedEntry.column2)
                 ));
-            } else{
+            }else{
                 txtNombre.setText("");
                 txtApellido.setText("");
-                mostrarMensaje("No existe un registro con Id ");
+                mostrarMensaje("No existe un registro con ese id");
             }
         }
     }
 
-    public void actualizar(View vista) {
+    public void actualizar(View view) {
         String id = leerId();
         if (id == null) return;
         String nombre = txtNombre.getText().toString().trim();
@@ -114,4 +122,38 @@ public class MainActivity extends AppCompatActivity {
             mostrarMensaje("No existe un registro con clave: " + id);
         }
     }
+
+    public void eliminar(View view){
+        String id = leerId();
+        if (id == null) return;
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = FeeReaderContract.FeedEntry._ID + " = ?";
+        String[] selectionArgs = {id};
+        int deletedRows = db.delete(FeeReaderContract.FeedEntry.nameTable, selection, selectionArgs);
+        if (deletedRows > 0) {
+            limpiarCampos();
+        }
+        mostrarMensaje("Se eliminó " + deletedRows + " registro(s)");
+    }
+
+    private void limpiarCampos(){
+        txtId.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+    }
+
+    private String leerId(){
+        String id = txtId.getText().toString().trim();
+        if(id.isEmpty()){
+            mostrarMensaje("Ingrese el ID del registro");
+            return null;
+        }
+        return id;
+    }
+
+    private void mostrarMensaje(String mensaje){
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
+    }
+
 }
